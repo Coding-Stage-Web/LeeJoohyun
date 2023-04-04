@@ -31,5 +31,10 @@ public class BookServiceImpl implements BookService {
 		Set<Book> booksByFilter = bookRepository.getBookListByFilter(filter);
 		return booksByFilter;
 	}
+	
+	public Book getBookById(String bookId) {
+		Book bookById = bookRepository.getBookById(bookId);
+		return bookById;
+	}
 
 }

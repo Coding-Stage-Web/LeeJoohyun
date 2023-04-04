@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.MatrixVariable;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import com.springmvc.domain.Book;
 import com.springmvc.service.BookService;
@@ -53,4 +54,12 @@ public class BookController {
 			model.addAttribute("bookList", booksByFilter);
 			return "books";
 	}
+	
+	@GetMapping("/book")
+	public String requesBookById(@RequestParam("id") String bookId, Model model) {
+		Book bookById = bookService.getBookById(bookId);
+		model.addAttribute("book", bookById);
+		return "book";
+	}
+	
 }
